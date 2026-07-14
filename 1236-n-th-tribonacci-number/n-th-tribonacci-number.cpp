@@ -14,7 +14,18 @@ public:
     }
 
     int tribonacci(int n) {
-        vector<int> dp(n + 1, -1);
-        return fun(n, dp);
+        // vector<int> dp(n + 1, -1);
+        int prev2 = 0;
+        int prev1 = 1;
+        int prev = 1;
+
+        for(int i=3; i<=n; i++){
+            int curr = prev + prev1 + prev2;
+            prev2 = prev1;
+            prev1 = prev;
+            prev = curr;
+        }
+        if(n == 0) return 0;
+        return prev;
     }
 };
